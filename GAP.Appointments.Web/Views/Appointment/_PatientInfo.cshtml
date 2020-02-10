@@ -1,0 +1,29 @@
+﻿<script type="text/javascript">
+    var userName = "@HttpContext.Current.User.Identity.Name.Split('\\').Last()";
+</script>
+
+<div id="conPatientInfo" class="widget-box" style="margin: 0 0 5px 0;">
+    <div class="widget-header">
+        <h4 class="widget-title">Información Paciente</h4>
+    </div>
+    <div class="widget-body form-horizontal" role="form">
+        <div class="widget-main" id="PatienteInfo" data-url="@Url.Action("ObtainPatientInfo", "Appointment")">
+            <table class="table table-condensed">
+                <tbody>
+                    <tr>
+                        <td><strong>Id</strong></td>
+                        <td colspan="2" id="pId"></td>
+                        <td><strong>Id Paciente</strong></td>
+                        <td colspan="2" id="pIdPaciente"></td>
+                        <td><strong>Nombre Paciente</strong></td>
+                        <td id="pNombre"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+

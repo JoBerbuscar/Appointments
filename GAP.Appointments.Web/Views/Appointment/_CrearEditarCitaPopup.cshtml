@@ -1,0 +1,71 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_PopupLayout.cshtml";
+
+    ViewBag.PopupId = "EditarCitaPopup";
+    ViewBag.PopupTitle = "Crear Cita";
+}
+
+@section PopupBody{
+    <div class="widget-body form-horizontal" role="form" onsubmit="return checkReqFields()">
+        <div class="widget-main" id="contenedorFiltrosEditarCitas">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label align-left" for="datFecha">Fecha Cita</label>
+                        <div class="col-sm-8">
+                            <div class="clearfix">
+                                <input type="datetime-local" id="datFecha" name="datFecha" class="fecha"
+                                       required data-required-msg="Campo Requerido"
+                                       fechaValida data-fechaValida-msg="Fecha no valida" />
+                            </div>
+                            <div class="help-block">
+                                <span class="k-invalid-msg" data-for="datFecha"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label align-left" for="ddlTipo">Tipo Cita</label>
+                        <div class="col-sm-8">
+                            <div class="clearfix">
+                                <select class="form-control" id="ddlTipo" name="ddlTipo"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label align-right" for="ddlEstado">Estado</label>
+                        <div class="col-sm-8">
+                            <div class="clearfix">
+                                <select class="form-control" id="ddlEstado" name="ddlEstado"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="clearfix"></span>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-info alert-dismissible fade show">
+        <strong>Note!</strong> Información almacenada con éxito.
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+}
+
+
+@section PopupFooter{
+    <button id="btnGuardarEdicion" type="button" class="btn btn-sm btn-default">
+        <span class="glyphicon glyphicon-floppy-open" aria-hidden="true"></span>
+        Guardar
+    </button>
+    <button id="btnCancelarEdicion" type="button" class="btn btn-sm btn-default" data-dismiss="modal">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        Cancelar
+    </button>
+}
+

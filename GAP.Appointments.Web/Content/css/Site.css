@@ -1,0 +1,375 @@
+﻿/* GENERAL */
+/* ============================================================ */
+
+/* Estilo general de la aplicación */
+body {
+    background: url(../img/background-gray.png) 0 0 !important;
+}
+
+/* Se estandariza el ancho de las entradas numéricas */
+input[type="number"] {
+    width: 100px;
+}
+
+/* Se le da margin a los checkbox */
+input[type="checkbox"] {
+    margin: 4px !important;
+}
+
+/* Título de la aplicación */
+.titulo-aplicacion {
+    font-family: 'Open Sans';
+    font-size: 13px;
+    color: #ffffff;
+}
+
+.menu-inicio {
+    position: relative;
+    z-index: auto;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #f5f5f5;
+    min-height: 41px;
+    line-height: 40px;
+    padding: 0 12px 0 0;
+}
+
+/* BOOTSTRAP */
+/* ============================================================ */
+
+/* Estilo de los cuadros modales */
+.modal-header {
+    padding: 5px;
+}
+
+.modal-title {
+    color: #0072BC;
+}
+
+.modal-content {
+    height: auto;
+    padding: 10px;
+    margin: 8px auto 8px auto;
+    border: solid;
+    border-color: gray;
+    border-radius: 8px;
+    border-width: .5px;
+    position: center;
+    max-height: calc(100vh - 55px);
+    max-width: calc(100vw - 55px);
+    overflow: auto;
+}
+
+.modal-footer {
+    padding: 0;
+    border: none;
+    margin: 0 15px 5px 0;
+    background-color: white;
+}
+
+/* Estandarización de los titulos de los widgets */
+.widget-header {
+    min-height: 30px;
+}
+
+    .widget-header > .widget-title {
+        color: #0072BC;
+        font-size: 14px;
+        line-height: 30px;
+    }
+
+/* Disminuye el margin entre los campos de los formularios */
+.form-group {
+    margin-bottom: 5px;
+}
+
+/* ACE TEMPLATE */
+/* ============================================================ */
+
+/* Cuadro de Login */
+.login-box .widget-main {
+    background-color: white !important;
+}
+
+.login-box .toolbar {
+    border-top: none !important;
+    /*background: url(../img/background-green.png) 0 0 !important;*/
+    background-color: #FF6A13 !important;
+}
+
+.login-box .forgot-password-link {
+    color: white !important;
+}
+
+/* Barra de navegación superior */
+.header {
+    margin-top: 0 !important;
+    padding-bottom: 5px !important;
+}
+
+.navbar {
+    /*height: 45px !important;*/
+    /*background: url(../img/background-gray.png) 0 -7px !important;*/
+    background-color: #0072BC;
+}
+
+    .navbar .dropdown-toggle {
+        width: 200px !important;
+        margin-right: -10px !important;
+        background-color: #FF6A13 !important;
+    }
+
+    .navbar .dropdown-menu {
+        right: 0px !important;
+        width: 200px !important;
+        margin-right: -10px !important;
+    }
+
+    .navbar .user-info {
+        width: 150px !important;
+        max-width: inherit !important;
+    }
+
+/* Miga de pan */
+.breadcrumbs {
+    border: none !important;
+    background: url(../img/background-gray.png) 0 0 !important;
+}
+
+.breadcrumb {
+    margin: 6px 22px 0 10px !important;
+}
+
+.breadcrumbs .breadcrumb li i,
+.breadcrumbs .breadcrumb li a {
+    color: #0072BC !important;
+}
+
+/* Barra de menú */
+
+.nav-list > li:before {
+    background-color: #0072BC !important;
+}
+
+.nav-list a.dropdown-toggle {
+    color: white;
+    /*background-color: #FF6A13 !important;*/
+}
+/*.nav-list .submenu li {
+    height: 36px !important;
+}*/
+.nav-list .submenu li {
+    color: white !important;
+    background-color: #0072BC !important;
+}
+
+.nav-list .submenu a {
+    /*width: 219px !important;*/
+    /*white-space: nowrap !important;*/
+    /*display: inline-block !important;*/
+    text-overflow: ellipsis !important;
+    /*color: #0072BC !important;*/
+    color: inherit !important;
+    background-color: inherit !important;
+    overflow: hidden !important;
+}
+
+    .nav-list .submenu a:hover {
+        color: #FF6A13 !important;
+        /*Pantone 465U*/
+        /*background-color: #b0946f !important;*/
+    }
+
+.nav-list .submenu img {
+    background-color: #0072BC !important;
+    margin-right: 5px;
+}
+
+.sidebar {
+    width: 220px !important;
+}
+
+    .sidebar + .main-content {
+        margin-left: 220px !important;
+    }
+
+    .sidebar:before {
+        background: url(../img/background-gray.png) 0 0 !important;
+    }
+
+/* Contenedor principal */
+.main-container .page-content {
+    margin-left: -1px !important;
+    border-left: 1px solid #CCCCCC !important;
+    border-top: 1px solid #CCCCCC !important;
+}
+
+.main-container .header h3 {
+    margin: 9px 0 9px 0 !important;
+}
+
+/* Pie de página */
+.footer {
+    padding-top: 10px !important;
+}
+
+    .footer .footer-inner {
+        margin-left: 40px !important;
+        margin-right: 10px !important;
+    }
+
+    .footer .footer-content {
+        bottom: 0 !important;
+        border: none !important;
+        font-size: 12px !important;
+        padding: 5px 0 0 0 !important;
+    }
+
+/* Barra de progreso */
+.progress {
+    margin: 0 !important;
+}
+
+.progress-bar {
+    background-color: #0080A1 !important;
+}
+
+/* Visualización en Tabs */
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+    border-top: 2px solid #0072BC !important;
+}
+
+    .nav-tabs > li > a:hover,
+    .nav-tabs > li > a:focus
+    .nav-tabs > li.active > a:hover,
+    .nav-tabs > li.active > a:focus {
+        color: #0072BC !important;
+    }
+
+/* Estilo de las tablas */
+.widget-box .table > thead > tr > th,
+.widget-box .table > tbody > tr > th,
+.widget-box .table > tfoot > tr > th,
+.widget-box .table > thead > tr > td,
+.widget-box .table > tbody > tr > td,
+.widget-box .table > tfoot > tr > td {
+    padding: 5px;
+}
+
+
+/* ESTILO BOTONES CON FILE ICON */
+/* ============================================================ */
+
+.s-icon {
+    margin: 0px !important;
+}
+
+.k-icon {
+    opacity: .65 !important;
+}
+
+.fa {
+    margin: 1px 0px;
+}
+
+/* Se adiciona estos etilos para que sobreescriban los de ace que por defecto son azules*/
+/* Inicio de Estilos */
+.no-skin .navbar .navbar-toggle {
+    background-color: #FF6A13;
+}
+
+    .no-skin .navbar .navbar-toggle:focus {
+        background-color: #FF6A13;
+        border-color: transparent;
+    }
+
+    .no-skin .navbar .navbar-toggle:hover {
+        background-color: #FF6A13;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .no-skin .navbar .navbar-toggle.display,
+    .no-skin .navbar .navbar-toggle[data-toggle=collapse]:not(.collapsed) {
+        background-color: #FF6A13;
+        box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.25);
+        border-color: rgba(255, 255, 255, 0.35);
+    }
+/* Fin de Estilos */
+
+.altura_45 {
+    height: 45px;
+}
+
+/* Estos estilos sobreescribe el color de fondo de los menus de primer nivel */
+/* Inicio de estilos */
+.nav-list > li > a {
+    background-color: #FF6A13 !important;
+    color: white !important;
+}
+
+.nav-list > li:hover > a {
+    /*background-color: #ff6a13 !important;*/
+    color: white !important;
+}
+/* Fin de estilos */
+
+/* Este estilo acorta el espacio del texto dentro del menu en el anchor de un menu para que no se solape con la flecha de submenu*/
+.no-skin .nav-list > li .submenu > li > a.dropdown-toggle {
+    padding-right: 30px;
+}
+
+a.dropdown-toggle:hover {
+    /*background-color: #ff6a13 !important;*/
+}
+
+/* Utilizado para aumentar el maximo tamaño que puede tener un tooltip de error de validacion en kendo */
+.k-widget.k-tooltip.k-tooltip-validation.k-invalid-msg {
+    max-width: 400px;
+}
+
+.btn-default {
+    background-color: #A9A9A9 !important;
+    border-color: #A9A9A9 !important;
+}
+
+    .btn-default:hover {
+        background-color: #646971 !important;
+        border-color: #646971 !important;
+    }
+
+    .btn-default:focus {
+        background-color: #646971 !important;
+        border-color: #646971 !important;
+    }
+
+.k-primary:hover, .k-primary:focus {
+    color: #ffffff;
+    border-color: #0072BC;
+    background-color: #0072BC;
+}
+
+.form-control-static {
+    font-size: 14px;
+}
+
+/* This forces the grids to have just al little height before the initial data is loaded. 
+   Without this the loading progress bar / spinner won't be shown.*/
+.k-grid-content {
+    min-height: 80px;
+}
+
+/* Este estilo esconde el boton de subir archivo del widget de upload. */
+.k-upload-selected {
+    display: none;
+}
+
+/* Este hack se aplica para que se puedan mostrar correctamente los grid y arboles de kendo ui en pestanas de bootstrap */
+/* bootstrap hack: fix content width inside hidden tabs */
+.tab-content > .tab-pane:not(.active),
+.pill-content > .pill-pane:not(.active) {
+    display: block;
+    height: 0;
+    overflow-y: hidden;
+}
+/* bootstrap hack end */

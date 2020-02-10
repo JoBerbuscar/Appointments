@@ -1,0 +1,193 @@
+﻿@using GAP.Appointments.Web.Resources
+@using Microsoft.Web.Mvc
+@using GAP.Appointments.Web.Controllers.Home
+@using GAP.Appointments.Web.Controllers.Appointment
+@using GAP.Appointments.Web.Models
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Moment.js: -->
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.4/moment.min.js"></script>*@
+    <!-- Locales for moment.js-->
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.4/locale/es.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.15/sorting/datetime-moment.js"></script>*@
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="description" content="@Messages.Comun_Description" />
+
+    <title>@Messages.Comun_Tittle_App</title>
+
+    <title>@ViewBag.Title</title>
+
+    <!-- Ícono de la aplicación. -->
+    <link rel="shortcut icon" href="~/Content/img/app.ico">
+
+    <!-- Bundles CSS. -->
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Sección con los estilos propios de cada vista. -->
+    @RenderSection("css", required: false)
+</head>
+
+<body class="no-skin">
+    <div id="navbar" class="navbar navbar-default">
+        <div class="navbar-container" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- Título de la aplicación. -->
+            <div class="navbar-header pull-left">
+                <img src="~/Content/img/CustomLogo.png" class="altura_45" /><span class="titulo-aplicacion">@Messages.Comun_Tittle_App</span>
+            </div>
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+
+                    <!-- Dropdown con las opciones de sesión del usuario. -->
+                    <li class="light-blue">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <span class="user-info">
+                                <small>@Messages.Layout_Start</small>
+                                @Context.User.Identity.Name
+                                @*@if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                {
+                                    var identity = ((CustomPrincipal)HttpContext.Current.User);
+                                    @Html.Label(string.Format("Welcome {0} {1}", identity.FirstName, identity.LastName))
+                                    @Html.ActionLink("Log out", "LogOut", "Account")
+                                }*@
+                            </span>
+                            @*<i class="ace-icon fa fa-caret-down"></i>*@
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main-container" id="main-container">
+        <div id="sidebar" class="sidebar responsive">
+            <!-- Miga de pan. -->
+            <div class="breadcrumbs" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("Index", "Home")">
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            @Messages.Layout_Inicio
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Menú de la aplicación. -->
+            <ul class="nav nav-list">
+                <li>
+                    <a title="Pacientes" class="dropdown-toggle" href="#">
+                        <i class="menu-icon fa fa-bars"></i>
+                        <span class="menu-text">Pacientes</span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                    <b class="arrow"></b>
+                    <ul class="submenu nav-show">
+                        <li>
+                            <a title="Administración" href="@(Html.BuildUrlFromExpression<HomeController>(i => i.Index()))">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Variables
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a title="Citas" class="dropdown-toggle" href="#">
+                        <i class="menu-icon fa fa-calculator"></i>
+                        <span class="menu-text">Citas</span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                    <b class="arrow"></b>
+                    <ul class="submenu nav-show">
+                        <li>
+                            <a title="Administración" href="@(Html.BuildUrlFromExpression<AppointmentController>(i => i.Citas()))">
+                                <i class="menu-icon fa fa-balance-scale"></i>
+                                <span class="menu-text">Citas</span>
+                                <b class="arrow fa fa-angle-double-right"></b>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" id="btnSalir"
+                       data-endsession="@Url.Action("Index", "Home")"
+                       data-logout="@Url.Action("LogOut401", "Home")"
+                       data-logoff="@Url.Action("LogOff401", "Home")">
+                        <i class="ace-icon fa fa-power-off">
+                        </i>
+                        @Messages.Layout_Salir
+                    </a>
+                </li>
+                @*}*@
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="page-content">
+                    <!-- Título de cada vista. -->
+                    @if (ViewBag.Title != Messages.Error_Titulo)
+                    {
+                        <div class="header smaller lighter gris_corporativo" id="containerTitle">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table border="0" style="width: 100%">
+                                        <tr>
+                                            <td align="left" style="vertical-align: middle;">
+                                                <h3 class="smaller lighter gris_corporativo">
+                                                    @ViewBag.Title
+                                                </h3>
+                                            </td>
+                                            <td align="right">
+                                                <div>
+                                                    @RenderSection("buttons", required: false)
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <!-- Contenido principal de cada vista. -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pie de página. -->
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+                    <span class="bigger-120">
+                        <strong>Copyright &nbsp; Appointments &copy; @DateTime.Now.Year &nbsp; &nbsp;Powered By&nbsp;&nbsp;</strong>
+                    </span>
+                    &nbsp; &nbsp;
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/site-bundle.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AppointmentsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="IdKey" />
+          </Key>
+          <Property Name="IdKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdKeyPacient" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="IdType" Type="int" Nullable="false" />
+          <Property Name="IdState" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pacient">
+          <Key>
+            <PropertyRef Name="IdKey" />
+          </Key>
+          <Property Name="IdKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="IdKey" />
+          </Key>
+          <Property Name="IdKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="IdKey" />
+          </Key>
+          <Property Name="IdKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Appointme__IdKey__4222D4EF">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="IdKey" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="IdKeyPacient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__IdSta__440B1D61">
+          <End Role="State" Type="Self.State" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="IdKey" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="IdState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__IdTyp__4316F928">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="IdKey" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AppointmentsModelStoreContainer">
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacient" EntityType="Self.Pacient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Appointme__IdKey__4222D4EF" Association="Self.FK__Appointme__IdKey__4222D4EF">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__IdSta__440B1D61" Association="Self.FK__Appointme__IdSta__440B1D61">
+            <End Role="State" EntitySet="State" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__IdTyp__4316F928" Association="Self.FK__Appointme__IdTyp__4316F928">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AppointmentsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="IdKey" />
+          </Key>
+          <Property Name="IdKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdKeyPacient" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdType" Type="Int32" Nullable="false" />
+          <Property Name="IdState" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pacient" Relationship="Self.FK__Appointme__IdKey__4222D4EF" FromRole="Appointment" ToRole="Pacient" />
+          <NavigationProperty Name="State" Relationship="Self.FK__Appointme__IdSta__440B1D61" FromRole="Appointment" ToRole="State" />
+          <NavigationProperty Name="Type" Relationship="Self.FK__Appointme__IdTyp__4316F928" FromRole="Appointment" ToRole="Type" />
+        </EntityType>
+        <EntityType Name="Pacient">
+          <Key>
+            <PropertyRef Name="IdKey" />
+          </Key>
+          <Property Name="IdKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__IdKey__4222D4EF" FromRole="Pacient" ToRole="Appointment" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="IdKey" />
+          </Key>
+          <Property Name="IdKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__IdSta__440B1D61" FromRole="State" ToRole="Appointment" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="IdKey" />
+          </Key>
+          <Property Name="IdKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__IdTyp__4316F928" FromRole="Type" ToRole="Appointment" />
+        </EntityType>
+        <Association Name="FK__Appointme__IdKey__4222D4EF">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="IdKey" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="IdKeyPacient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__IdSta__440B1D61">
+          <End Role="State" Type="Self.State" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="IdKey" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="IdState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__IdTyp__4316F928">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="IdKey" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AppointmentsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+          <EntitySet Name="Pacients" EntityType="Self.Pacient" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="Types" EntityType="Self.Type" />
+          <AssociationSet Name="FK__Appointme__IdKey__4222D4EF" Association="Self.FK__Appointme__IdKey__4222D4EF">
+            <End Role="Pacient" EntitySet="Pacients" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__IdSta__440B1D61" Association="Self.FK__Appointme__IdSta__440B1D61">
+            <End Role="State" EntitySet="States" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__IdTyp__4316F928" Association="Self.FK__Appointme__IdTyp__4316F928">
+            <End Role="Type" EntitySet="Types" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AppointmentsModelStoreContainer" CdmEntityContainer="AppointmentsEntities">
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="AppointmentsModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="IdKey" ColumnName="IdKey" />
+                <ScalarProperty Name="IdKeyPacient" ColumnName="IdKeyPacient" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+                <ScalarProperty Name="IdState" ColumnName="IdState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacients">
+            <EntityTypeMapping TypeName="AppointmentsModel.Pacient">
+              <MappingFragment StoreEntitySet="Pacient">
+                <ScalarProperty Name="IdKey" ColumnName="IdKey" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="AppointmentsModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="IdKey" ColumnName="IdKey" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="AppointmentsModel.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="IdKey" ColumnName="IdKey" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

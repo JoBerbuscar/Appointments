@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "AdministarCitas";
+}
+@Html.Partial("~/Views/Appointment/_PatientInfo.cshtml")
+<div id="divPrincipal">
+    @*<div class="widget-box ui-sortable-handle" style="margin: 0 0 5px 0;">
+            <div class="widget-header">
+                <h4 class="widget-title">Consultar Citas</h4>
+            </div>
+            <div class="widget-body form-horizontal" role="form">
+                <div class="widget-main" id="contenedorFiltros">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label align-left" for="inputIdPaciente">Nombre Paciente</label>
+                                <div class="col-sm-8">
+                                    <div class="clearfix">
+                                        <input type="text" id="inputIdPaciente" name="inputIdPaciente" class="form-control" disabled />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label align-left" for="datFechaConsulta">Fecha Consulta</label>
+                                <div class="col-sm-8">
+                                    <div class="clearfix">
+                                        <input type="date" id="datFechaConsulta" name="datFechaConsulta" class="fecha" style="width: 100%" required data-required-msg="CampoRequerido" fechaValida data-fechaValida-msg="FechaNoValida" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="clearfix"></span>
+                </div>
+            </div>
+        </div>*@
+    <div class="widget-box ui-sortable-handle" style="margin: 0 0 5px 0;">
+        <div class="widget-header">
+            <h4 class="widget-title">Citas Pacientes</h4>
+        </div>
+        <div class="widget-body form-horizontal" role="form">
+            <div class="widget-main" id="datos">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-sm-8">
+                                <div class="clearfix">
+                                    <input type="button" value="Adicionar Cita" id="addbtn" class="btn btn-primary btn-xs" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <table id="tableListaCitas" class="table table-striped table-bordered"
+                                   data-url="@Url.Action("ObtainAppointmentsByPatient", "Appointment")"
+                                   data-type="@Url.Action("ObtainTypes", "Appointment")"
+                                   data-create="@Url.Action("CreateAppointment", "Appointment")"
+                                   data-state="@Url.Action("ObtainStates", "Appointment")"></table>
+                        </div>
+                    </div>
+                </div>
+                <span class="clearfix"></span>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("~/Views/Appointment/_CrearEditarCitaPopup.cshtml")
+@Html.Partial("~/Views/Shared/_AlertaPopup.cshtml")
+
+@section buttons{
+    <button id="btnConsultar" type="button" class="btn btn-default btn-sm">
+        <i class="fa fa-search"></i>
+        Consultar
+    </button>
+}
+@section scripts{
+    @Scripts.Render("~/Content/js/Appointments/registro-citas")
+    @Scripts.Render("~/bundles/datatables")
+}
