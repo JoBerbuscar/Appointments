@@ -15,9 +15,8 @@ namespace GAP.Appointments.Web.Models
             return ((CurrentUser != null && !CurrentUser.IsInRole(Roles)) || CurrentUser == null) ? false : true;
         }
 
-        public override void OnAuthorization(AuthorizationContext filterContext)
+        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            // If they are authorized, handle accordingly
             if (this.AuthorizeCore(filterContext.HttpContext))
             {
                 base.OnAuthorization(filterContext);
@@ -29,7 +28,7 @@ namespace GAP.Appointments.Web.Models
                     (new System.Web.Routing.RouteValueDictionary
                      (new
                      {
-                         controller = "ErroLogin",
+                         controller = "ErrorLogin",
                          action = "AccessDenied"
                      }
                      ));

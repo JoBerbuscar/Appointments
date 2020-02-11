@@ -38,7 +38,7 @@ namespace GAP.Appointments.Web.Models
                     (new System.Web.Routing.RouteValueDictionary
                      (new
                      {
-                         controller = "ErroLogin",
+                         controller = "ErrorLogin",
                          action = "AccessDenied"
                      }
                      ));

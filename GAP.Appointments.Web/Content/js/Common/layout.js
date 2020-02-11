@@ -3,12 +3,12 @@
     var URLLogOut = $control.data("logout")
     $.ajax({
         url: URLLogOut,
-        data: "{id:'" + '' + "'}",
+        //data: "{id:'" + '' + "'}",
         type: 'POST',
-        username: '',
-        password: '',
+        //username: '',
+        //password: '',
         success: function () {
-            alert('logged off');
+            window.location.href = '/Account/Login'
         }
     });
 }

@@ -2,6 +2,7 @@
 
 namespace GAP.Appointments.Web.Controllers
 {
+    [AllowAnonymous]
     public class ErrorLoginController : Controller
     {
         // GET: Error
