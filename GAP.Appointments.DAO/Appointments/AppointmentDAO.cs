@@ -65,7 +65,7 @@ namespace GAP.Appointments.DAO.Appointments
             {
                 appointmentsByPacient = await (from app in dbContext.Appointments
                                                join pat in dbContext.Pacients on app.IdKeyPacient equals pat.IdKey    
-                                               join sta in dbContext.Types on app.Type.IdKey equals sta.IdKey
+                                               join sta in dbContext.States on app.Type.IdKey equals sta.IdKey
                                                where app.IdKeyPacient == filtro.IdKeyPacient
                                                  && DbFunctions.TruncateTime(app.Date) == filtro.Date.Date
                                                  && sta.Description == "Programado"
@@ -95,7 +95,7 @@ namespace GAP.Appointments.DAO.Appointments
                                                join pat in dbContext.Pacients on app.IdKeyPacient equals pat.IdKey
                                                where app.IdKeyPacient == filtro.IdKeyPacient
                                                  && app.IdKey == filtro.IdKey
-                                                 &&  DbFunctions.DiffHours(app.Date, SqlFunctions.GetDate().Value) > 24
+                                                 &&  DbFunctions.DiffHours(app.Date, SqlFunctions.GetDate().Value) <= 24
                                                select app).ProjectTo<AppointmenTO>().ToListAsync();
 
                 if (appointmentsByPacient.Count <= 0)
