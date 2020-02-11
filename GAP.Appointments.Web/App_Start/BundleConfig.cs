@@ -57,13 +57,14 @@ namespace GAP.Appointments.Web
                     "~/Scripts/ace/ace.settings-rtl.js",
                     "~/Scripts/ace/ace.settings-skin.js",
                     "~/Scripts/ace/ace.widget-on-reload.js",
-                    "~/Scripts/ace/ace.searchbox-autocomplete.js"
+                    "~/Scripts/ace/ace.searchbox-autocomplete.js",
+                     "~/Content/js/Common/layout.js"
                 ));
 
             //Capturas citas
             bundles.Add(new ScriptBundle("~/Content/js/Appointments/registro-citas")
                 .Include(
-                    "~/Content/js/Appointments/patient-info.js",
+                    "~/Content/js/Appointments/Pacient-info.js",
                     "~/Content/js/Appointments/appointment.js"
                 ));
 

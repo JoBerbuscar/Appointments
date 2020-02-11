@@ -15,27 +15,27 @@ namespace GAP.Appointments.DAO.Appointments
     public class AppointmentDAO : IAppointmentIntegrationDAO
     {
         /// <see cref="MasGlobal.Employees.Domain.Integration.EmployeeIntegrationDAO.GetEmployees"/>
-        public async Task<ICollection<AppointmenTO>> GetAppointments(string IdPatient)
+        public async Task<ICollection<AppointmenTO>> GetAppointments(string IdPacient)
         {
             List<AppointmenTO> appointmentsByPacient = new List<AppointmenTO>();
             using (AppointmentsEntities dbContext = new AppointmentsEntities())
             {
                 appointmentsByPacient = await (from app in dbContext.Appointments
                                                join pat in dbContext.Pacients on app.IdKeyPacient equals pat.IdKey
-                                               where pat.Id == IdPatient
+                                               where pat.Id == IdPacient
                                                select app).ProjectTo<AppointmenTO>().ToListAsync();
             }
             return appointmentsByPacient;
         }
 
-        public async Task<PatientTO> GetPatientInfo(string IdPatient)
+        public async Task<PacientTO> GetPacientInfo(string IdPacient)
         {
-            PatientTO patienteInfoByPatient = new PatientTO();
+            PacientTO PacienteInfoByPacient = new PacientTO();
             using (AppointmentsEntities dbContext = new AppointmentsEntities())
             {
-                patienteInfoByPatient = await dbContext.Pacients.Where(x=> x.Id == IdPatient).ProjectTo<PatientTO>().FirstOrDefaultAsync();
+                PacienteInfoByPacient = await dbContext.Pacients.Where(x=> x.Id == IdPacient).ProjectTo<PacientTO>().FirstOrDefaultAsync();
             }
-            return patienteInfoByPatient;
+            return PacienteInfoByPacient;
         }
 
         public async Task<ICollection<TypeTO>> GetTypes()

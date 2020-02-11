@@ -1,13 +1,13 @@
 ﻿
 function obtenerInformacionPaciente() {
-    var patient = userName;
-    var url = $("#PatienteInfo").data("url");   
+    var Pacient = userName;
+    var url = $("#PacienteInfo").data("url");   
 
-    $("#PatienteInfo").removeClass("hide");
+    $("#PacienteInfo").removeClass("hide");
     $.ajax({
         url: url,
         data: {
-            IdPatient: patient
+            IdPacient: Pacient
         },
         success: function (data) {
             if (data) {

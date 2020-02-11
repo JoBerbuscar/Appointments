@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "AdministarCitas";
 }
-@Html.Partial("~/Views/Appointment/_PatientInfo.cshtml")
+@Html.Partial("~/Views/Appointment/_PacientInfo.cshtml")
 <div id="divPrincipal">
     @*<div class="widget-box ui-sortable-handle" style="margin: 0 0 5px 0;">
             <div class="widget-header">
@@ -58,7 +58,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <table id="tableListaCitas" class="table table-striped table-bordered"
-                                   data-url="@Url.Action("ObtainAppointmentsByPatient", "Appointment")"
+                                   data-url="@Url.Action("ObtainAppointmentsByPacient", "Appointment")"
                                    data-type="@Url.Action("ObtainTypes", "Appointment")"
                                    data-create="@Url.Action("CreateAppointment", "Appointment")"
                                    data-state="@Url.Action("ObtainStates", "Appointment")"></table>
@@ -73,12 +73,12 @@
 @Html.Partial("~/Views/Appointment/_CrearEditarCitaPopup.cshtml")
 @Html.Partial("~/Views/Shared/_AlertaPopup.cshtml")
 
-@section buttons{
+@*@section buttons{
     <button id="btnConsultar" type="button" class="btn btn-default btn-sm">
         <i class="fa fa-search"></i>
         Consultar
     </button>
-}
+}*@
 @section scripts{
     @Scripts.Render("~/Content/js/Appointments/registro-citas")
     @Scripts.Render("~/bundles/datatables")

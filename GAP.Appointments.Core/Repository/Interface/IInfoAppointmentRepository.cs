@@ -16,13 +16,13 @@ namespace GAP.Appointments.Core.Repository
         /// </summary>
         /// <param name="IdPacient">Pacient Id</param>
         /// <returns>Instance of <see cref="AppointmenTO"/> with Employee information</returns>
-        Task<ICollection<AppointmenTO>> GetAppointments(string IdPatient);
+        Task<ICollection<AppointmenTO>> GetAppointments(string IdPacient);
 
         /// <summary>
-        /// Get patient info by IdPatient
+        /// Get Pacient info by IdPacient
         /// </summary>
-        /// <returns>List of <see cref="PatientTO"/></returns>
-        Task<PatientTO> GetPatientInfo(string IdPatient);
+        /// <returns>List of <see cref="PacientTO"/></returns>
+        Task<PacientTO> GetPacientInfo(string IdPacient);
 
         /// <summary>
         /// Get types

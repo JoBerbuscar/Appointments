@@ -36,7 +36,7 @@ namespace GAP.Appointments.DAO.Appointments
                 .ForMember(dest => dest.TypeDescription, options => options.MapFrom(source => source.Type.Description)
                 );
 
-            CreateMap<Pacient, PatientTO>();
+            CreateMap<Pacient, PacientTO>();
 
             CreateMap<AppointmenTO, Appointment>();
 

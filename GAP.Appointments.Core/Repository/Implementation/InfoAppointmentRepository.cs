@@ -20,19 +20,19 @@ namespace GAP.Appointments.Core.Repository
         }
 
         /// <see cref="GAP.Appointments.Core.Repository.IEmployeeRepository.GetAppointments(string)"
-        public async Task<ICollection<AppointmenTO>> GetAppointments(string IdPatient)
+        public async Task<ICollection<AppointmenTO>> GetAppointments(string IdPacient)
         {
             //Get employees list from data source
-            ICollection<AppointmenTO> appointments = await AppointmentDAO.GetAppointments(IdPatient);
+            ICollection<AppointmenTO> appointments = await AppointmentDAO.GetAppointments(IdPacient);
             return appointments;
         }
 
-        /// <see cref="GAP.Appointments.Core.Repository.IEmployeeRepository.GetPatientInfo(string)"
-        public async Task<PatientTO> GetPatientInfo(string IdPatient)
+        /// <see cref="GAP.Appointments.Core.Repository.IEmployeeRepository.GetPacientInfo(string)"
+        public async Task<PacientTO> GetPacientInfo(string IdPacient)
         {
             //Get employees list from data source
-            PatientTO patient = await AppointmentDAO.GetPatientInfo(IdPatient);
-            return patient;
+            PacientTO Pacient = await AppointmentDAO.GetPacientInfo(IdPacient);
+            return Pacient;
         }
 
         /// <summary>

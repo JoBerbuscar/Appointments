@@ -2,12 +2,12 @@
     var userName = "@HttpContext.Current.User.Identity.Name.Split('\\').Last()";
 </script>
 
-<div id="conPatientInfo" class="widget-box" style="margin: 0 0 5px 0;">
+<div id="conPacientInfo" class="widget-box" style="margin: 0 0 5px 0;">
     <div class="widget-header">
         <h4 class="widget-title">Información Paciente</h4>
     </div>
     <div class="widget-body form-horizontal" role="form">
-        <div class="widget-main" id="PatienteInfo" data-url="@Url.Action("ObtainPatientInfo", "Appointment")">
+        <div class="widget-main" id="PacienteInfo" data-url="@Url.Action("ObtainPacientInfo", "Appointment")">
             <table class="table table-condensed">
                 <tbody>
                     <tr>

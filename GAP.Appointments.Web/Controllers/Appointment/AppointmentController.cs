@@ -39,30 +39,38 @@ namespace GAP.Appointments.Web.Controllers.Appointment
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
+        public ActionResult Pacientes()
+        {
+            ViewBag.Title = "Pacientes";
+
+            return View();
+        }
+
         /// <summary>
         /// Consultar la información paciente
         /// </summary>
-        /// <param name="IdPatient">Paciente</param>
+        /// <param name="IdPacient">Paciente</param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult ObtainPatientInfo(string IdPatient)
+        public ActionResult ObtainPacientInfo(string IdPacient)
         {
-            var InfoPatient = _proxy.GetForMessage<string>($"{ConstantesApi.getPatientInfoUri}?IdPatient={Server.UrlEncode(IdPatient)}");
+            var InfoPacient = _proxy.GetForMessage<string>($"{ConstantesApi.getPacientInfoUri}?IdPacient={Server.UrlEncode(IdPacient)}");
 
-            return Content(InfoPatient.Body, "application/json");
+            return Content(InfoPacient.Body, "application/json");
         }
 
         /// <summary>
         /// Consultar la información citas
         /// </summary>
-        /// <param name="IdPatient">Paciente</param>
+        /// <param name="IdPacient">Paciente</param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult ObtainAppointmentsByPatient(string IdPatient)
+        public ActionResult ObtainAppointmentsByPacient(string IdPacient)
         {
-            var InfoAppByPatient = _proxy.GetForMessage<string>($"{ConstantesApi.getAppointmentsUri}?IdPatient={Server.UrlEncode(IdPatient)}");
+            var InfoAppByPacient = _proxy.GetForMessage<string>($"{ConstantesApi.getAppointmentsUri}?IdPacient={Server.UrlEncode(IdPacient)}");
 
-            return Content(InfoAppByPatient.Body, "application/json");
+            return Content(InfoAppByPacient.Body, "application/json");
         }
 
         /// <summary>

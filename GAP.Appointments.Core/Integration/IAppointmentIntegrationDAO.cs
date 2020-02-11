@@ -10,16 +10,16 @@ namespace GAP.Appointments.Core.Integration
     public interface IAppointmentIntegrationDAO
     {
         /// <summary>
-        /// Get appointments by IdPatient
+        /// Get appointments by IdPacient
         /// </summary>
         /// <returns>List of <see cref="AppointmenTO"/></returns>
-        Task<ICollection<AppointmenTO>> GetAppointments(string IdPatient);
+        Task<ICollection<AppointmenTO>> GetAppointments(string IdPacient);
 
         /// <summary>
-        /// Get patient info by IdPatient
+        /// Get Pacient info by IdPacient
         /// </summary>
-        /// <returns>List of <see cref="PatientTO"/></returns>
-        Task<PatientTO> GetPatientInfo(string IdPatient);
+        /// <returns>List of <see cref="PacientTO"/></returns>
+        Task<PacientTO> GetPacientInfo(string IdPacient);
 
         /// <summary>
         /// Get types

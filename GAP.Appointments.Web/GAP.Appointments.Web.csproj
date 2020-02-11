@@ -217,8 +217,9 @@
     <Content Include="Content\img\alert-success.png" />
     <Content Include="Content\img\alert-warning.png" />
     <Content Include="Content\js\Appointments\appointment.js" />
-    <Content Include="Content\js\Appointments\patient-info.js" />
+    <Content Include="Content\js\Appointments\pacient-info.js" />
     <Content Include="Content\js\Appointments\update-create-appointment-popup.js" />
+    <Content Include="Content\js\Common\layout.js" />
     <Content Include="Content\lib\css\ace\ace-fonts.css" />
     <Content Include="Content\lib\css\ace\ace.css" />
     <Content Include="Content\img\background-gray.png" />
@@ -318,10 +319,11 @@
     <Content Include="Views\Account\Registration.cshtml" />
     <Content Include="Views\Shared\AccessDenied.cshtml" />
     <Content Include="Views\Appointment\Citas.cshtml" />
-    <Content Include="Views\Appointment\_PatientInfo.cshtml" />
+    <Content Include="Views\Appointment\_PacientInfo.cshtml" />
     <Content Include="Views\Shared\_PopupLayout.cshtml" />
     <Content Include="Views\Appointment\_CrearEditarCitaPopup.cshtml" />
     <Content Include="Views\Shared\_AlertaPopup.cshtml" />
+    <None Include="Views\Appointment\Pacientes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

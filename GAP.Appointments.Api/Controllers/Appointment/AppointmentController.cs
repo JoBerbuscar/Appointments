@@ -36,12 +36,12 @@ namespace GAP.Appointments.Api.Controllers
         /// Get all info about employees
         /// </summary>
         [HttpGet]
-        [ResponseType(typeof(PatientTO))]
-        [Route(ConstantesApi.getPatientInfoUri)]
-        public async Task<IHttpActionResult> GetPatientInfo(string IdPatient)
+        [ResponseType(typeof(PacientTO))]
+        [Route(ConstantesApi.getPacientInfoUri)]
+        public async Task<IHttpActionResult> GetPacientInfo(string IdPacient)
         {
-            PatientTO PatientInfo = await _repository.GetPatientInfo(IdPatient);
-            return Ok(PatientInfo);
+            PacientTO PacientInfo = await _repository.GetPacientInfo(IdPacient);
+            return Ok(PacientInfo);
         }
 
         /// <summary>
@@ -50,9 +50,9 @@ namespace GAP.Appointments.Api.Controllers
         [HttpGet]
         [ResponseType(typeof(ICollection<AppointmenTO>))]
         [Route(ConstantesApi.getAppointmentsUri)]
-        public async Task<IHttpActionResult> GetAppointments(string IdPatient)
+        public async Task<IHttpActionResult> GetAppointments(string IdPacient)
         {
-            ICollection<AppointmenTO> AppointmenInfo = await _repository.GetAppointments(IdPatient); 
+            ICollection<AppointmenTO> AppointmenInfo = await _repository.GetAppointments(IdPacient); 
             return Ok(AppointmenInfo);
         }
 

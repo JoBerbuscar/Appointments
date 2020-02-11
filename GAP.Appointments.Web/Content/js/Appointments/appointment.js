@@ -2,7 +2,7 @@
 var _modelo = null;
 
 function ConsularCitas() {
-    var patient = userName;
+    var Pacient = userName;
     var urlConsulta = $('#tableListaCitas').data("url");
     //$('#loadingmessage').show();
     datatable = $('#tableListaCitas').DataTable();
@@ -15,7 +15,7 @@ function ConsularCitas() {
         dataType: "json",
         url: urlConsulta,
         data: {
-            IdPatient: patient
+            IdPacient: Pacient
         },
         success: function (response) {
             datatable.clear();

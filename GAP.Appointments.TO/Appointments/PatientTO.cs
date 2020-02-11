@@ -1,6 +1,6 @@
 ﻿namespace GAP.Appointments.TO.Appointments
 {
-    public class PatientTO
+    public class PacientTO
     {
         public int IdKey { get; set; }
 

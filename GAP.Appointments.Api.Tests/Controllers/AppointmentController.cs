@@ -34,15 +34,15 @@ namespace GAP.Appointments.Api.Tests.Controllers
             string appointmentServiceUrl = ConfigurationManager.AppSettings["APIRoot"];
             client = new RestClient(appointmentServiceUrl);
 
-            var request = new RestRequest("GetPatientInfo", Method.GET);
-            request.AddQueryParameter("IdPatient", "Berbuscar"); // aplica para cada estacion, etiqueta, parametro
+            var request = new RestRequest("GetPacientInfo", Method.GET);
+            request.AddQueryParameter("IdPacient", "Berbuscar"); // aplica para cada estacion, etiqueta, parametro
 
             // execute the request
             IRestResponse response = client.ExecuteAsGet(request, "GET");
 
-            PatientTO patient = JsonConvert.DeserializeObject<PatientTO>(response.Content);
+            PacientTO Pacient = JsonConvert.DeserializeObject<PacientTO>(response.Content);
 
-            Assert.IsNotNull(patient);
+            Assert.IsNotNull(Pacient);
         }
     }
 }
