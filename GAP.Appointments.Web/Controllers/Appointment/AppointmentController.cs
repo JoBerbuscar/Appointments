@@ -39,7 +39,7 @@ namespace GAP.Appointments.Web.Controllers.Appointment
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        [AuthorizeAttributeAction(Roles = "Admin")]
         public ActionResult Pacientes()
         {
             ViewBag.Title = "Pacientes";
