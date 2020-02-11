@@ -64,9 +64,11 @@ namespace GAP.Appointments.DAO.Appointments
             using (AppointmentsEntities dbContext = new AppointmentsEntities())
             {
                 appointmentsByPacient = await (from app in dbContext.Appointments
-                                               join pat in dbContext.Pacients on app.IdKeyPacient equals pat.IdKey
+                                               join pat in dbContext.Pacients on app.IdKeyPacient equals pat.IdKey    
+                                               join sta in dbContext.Types on app.Type.IdKey equals sta.IdKey
                                                where app.IdKeyPacient == filtro.IdKeyPacient
                                                  && DbFunctions.TruncateTime(app.Date) == filtro.Date.Date
+                                                 && sta.Description == "Programado"
                                                select app).ProjectTo<AppointmenTO>().ToListAsync();
 
                 if (appointmentsByPacient.Count <= 0)
@@ -80,6 +82,36 @@ namespace GAP.Appointments.DAO.Appointments
                     return false;
                 }
                 
+            }
+            return true;
+        }
+
+        public async Task<bool> UpdateAppointment(AppointmenTO filtro)
+        {
+            List<AppointmenTO> appointmentsByPacient = new List<AppointmenTO>();
+            using (AppointmentsEntities dbContext = new AppointmentsEntities())
+            {
+                appointmentsByPacient = await (from app in dbContext.Appointments
+                                               join pat in dbContext.Pacients on app.IdKeyPacient equals pat.IdKey
+                                               where app.IdKeyPacient == filtro.IdKeyPacient
+                                                 && app.IdKey == filtro.IdKey
+                                                 &&  DbFunctions.DiffHours(app.Date, SqlFunctions.GetDate().Value) > 24
+                                               select app).ProjectTo<AppointmenTO>().ToListAsync();
+
+                if (appointmentsByPacient.Count <= 0)
+                {
+                    Appointment AppointmentUpdate = Mapper.Map<Appointment>(filtro);
+                    dbContext.Appointments.Attach(AppointmentUpdate);
+                    var entry = dbContext.Entry(AppointmentUpdate);
+                    entry.Property(e => e.IdState).IsModified = true;
+                    // other changed properties
+                    dbContext.SaveChanges();
+                }
+                else
+                {
+                    return false;
+                }
+
             }
             return true;
         }

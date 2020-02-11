@@ -45,7 +45,7 @@ namespace GAP.Appointments.Api.Controllers
         }
 
         /// <summary>
-        /// Get all info about employees
+        /// Get all info about appointment
         /// </summary>
         [HttpGet]
         [ResponseType(typeof(ICollection<AppointmenTO>))]
@@ -81,7 +81,7 @@ namespace GAP.Appointments.Api.Controllers
         }
 
         /// <summary>
-        /// Get all info about employees
+        ///create appointment
         /// </summary>
         [HttpPost]
         [ResponseType(typeof(bool))]
@@ -89,6 +89,18 @@ namespace GAP.Appointments.Api.Controllers
         public async Task<IHttpActionResult> CreateAppointment(AppointmenTO filtro)
         {
             bool AppointmenState = await _repository.CreateAppointment(filtro);
+            return Ok(AppointmenState);
+        }
+
+        /// <summary>
+        /// Get all info about employees
+        /// </summary>
+        [HttpPost]
+        [ResponseType(typeof(bool))]
+        [Route(ConstantesApi.getUpdateAppointmentUri)]
+        public async Task<IHttpActionResult> UpdateAppointment(AppointmenTO filtro)
+        {
+            bool AppointmenState = await _repository.UpdateAppointment(filtro);
             return Ok(AppointmenState);
         }
     }

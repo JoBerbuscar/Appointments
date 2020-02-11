@@ -78,17 +78,14 @@ function configurarTabla() {
             { "title": "Id", "targets": 0 },
             { "title": "Fecha", "targets": 1 },
             { "title": "Estado", "targets": 2 },
-            { "title": "Tipo", "targets": 3 },
-            //{
-            //    "targets": 4,
-            //    "data": null,
-            //    "defaultContent": "<button>Editar</button>"
-            //},
+            { "title": "Tipo", "targets": 3 },            
+            { "title": "IdTipo", "targets": 4 }, 
+            { "title": "IdEstado", "targets": 5 },
             {
-                "targets": 4,
+                "targets": 6,
                 "data": null,
                 "defaultContent": "<button>Cancelar</button>"
-            }
+            },
         ],
         columns: [
             { "data": "IdKey" },
@@ -102,7 +99,9 @@ function configurarTabla() {
                 }
             },
             { "data": "StateDescription" },
-            { "data": "TypeDescription" }
+            { "data": "TypeDescription" },
+            { "data": "IdType" },
+            { "data": "IdState" }
         ]
     });
 
@@ -110,7 +109,38 @@ function configurarTabla() {
 
     $('#tableListaCitas tbody').on('click', 'button', function () {
         var data = table.row($(this).parents('tr')).data();
-        alert(data[0] + "'s salary is: " + data[5]);
+        var urlUpdate = $('#tableListaCitas').data("update");
+        _modelo = {};
+        tipo = "POST";
+
+        _modelo.IdKeyPacient = $("#pId").text();
+        _modelo.IdKey = data["IdKey"];
+        _modelo.Date = data["Date"];
+        _modelo.IdType = data["IdType"];
+        //_modelo.IdState = data["IdState"];    
+        _modelo.IdState = 2 ; //cancelado
+
+        var jsonData = JSON.stringify(_modelo);
+
+        $.ajax({
+            url: urlUpdate,
+            contentType: "application/json; charset=UTF-8",
+            data: jsonData,
+            dataType: "json",
+            type: tipo,
+            success: function (respuesta) {
+                if (respuesta) {
+                    ConsularCitas();
+                    showMessage('Exito', 'alert-success.png', 'Registro Se actualiza con éxito');
+                }
+                else {
+                    showMessage('Validación', 'alert-information.png', 'No se puede cancelar la cita, Las citas se deben cancelar con mínimo 24 horas de antelación.')
+                }
+            },
+            error: function (error) {
+                showMessage('Error', 'alert-error.png', error.status + '-' + error.statusText);
+            }
+        });
     });
 
     $('#addbtn').on('click', function () {
@@ -246,7 +276,7 @@ function actualizarCita() {
                 showMessage('Exito', 'alert-success.png','Registro Se almacena con éxito');
             }
             else {
-                showMessage('Validación', 'alert-information.png','No se puede adicionar la cita, ya que existe una cita programada para el mismo día')
+                showMessage('Validación', 'alert-information.png','No se puede adicionar la cita, No se puede crear otra cita para el mismo paciente en el mismo día.')
             }
         },
         error: function (error) {

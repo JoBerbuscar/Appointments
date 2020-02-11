@@ -64,5 +64,13 @@ namespace GAP.Appointments.Core.Repository
             bool appointmentState = await AppointmentDAO.CreateAppointment(filtro);
             return appointmentState;
         }
+
+        /// <see cref="GAP.Appointments.Core.Repository.IEmployeeRepository.GetAppointments(string)"
+        public async Task<bool> UpdateAppointment(AppointmenTO filtro)
+        {
+            //Get employees list from data source
+            bool appointmentState = await AppointmentDAO.UpdateAppointment(filtro);
+            return appointmentState;
+        }
     }
 }

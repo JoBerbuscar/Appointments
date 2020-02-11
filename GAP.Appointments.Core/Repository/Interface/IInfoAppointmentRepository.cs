@@ -42,5 +42,12 @@ namespace GAP.Appointments.Core.Repository
         /// <param name="filtro">appointmente</param>
         /// <returns>Instance of <see cref="AppointmenTO"/> with Employee information</returns>
         Task<bool> CreateAppointment(AppointmenTO filtro);
+
+        /// <summary>
+        /// update appointments by idPacient
+        /// </summary>
+        /// <param name="filtro">appointmente</param>
+        /// <returns>Instance of <see cref="AppointmenTO"/> with Employee information</returns>
+        Task<bool> UpdateAppointment(AppointmenTO filtro);
     }
 }

@@ -98,13 +98,25 @@ namespace GAP.Appointments.Web.Controllers.Appointment
         }
 
         /// <summary>
-        /// Consultar estados
+        /// crear citas
         /// </summary>
         /// <returns></returns>
         [HttpPost]
         public ActionResult CreateAppointment(AppointmenTO filtro)
         { 
             var Datos =  _proxy.PostForMessage<string>(ConstantesApi.getCreateAppointmentUri, filtro);
+
+            return Content(Datos.Body, "application/json");
+        }
+
+        /// <summary>
+        /// actualizar citas
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult UpdateAppointment(AppointmenTO filtro)
+        {
+            var Datos = _proxy.PostForMessage<string>(ConstantesApi.getUpdateAppointmentUri, filtro);
 
             return Content(Datos.Body, "application/json");
         }

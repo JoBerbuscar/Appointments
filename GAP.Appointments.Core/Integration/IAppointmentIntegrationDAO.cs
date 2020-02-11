@@ -38,5 +38,11 @@ namespace GAP.Appointments.Core.Integration
         /// <param name="filtro">appointmente</param>
         /// <returns>Instance of <see cref="AppointmenTO"/> with Employee information</returns>
         Task<bool> CreateAppointment(AppointmenTO filtro);
+
+        /// update appointments by idPacient
+        /// </summary>
+        /// <param name="filtro">appointmente</param>
+        /// <returns>Instance of <see cref="AppointmenTO"/> with Employee information</returns>
+        Task<bool> UpdateAppointment(AppointmenTO filtro);
     }
 }

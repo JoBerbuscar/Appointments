@@ -8,6 +8,7 @@
         public const string getTypesUri = "api/Appointment/GetTypes";
         public const string getStatesUri = "api/Appointment/GetStates";
         public const string getCreateAppointmentUri = "api/Appointment/CreateAppointment";
+        public const string getUpdateAppointmentUri = "api/Appointment/UpdateAppointment";
         #endregion
     }
 }
